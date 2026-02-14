@@ -100,6 +100,34 @@
       height: 70px;
     }
 
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      width: 30px;
+      height: 3px;
+      background: #2563eb;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
     nav ul {
       display: flex;
       list-style: none;
@@ -852,10 +880,53 @@
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .header-container {
+    @media (max-width: 968px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: white;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding-top: 80px;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav ul {
         flex-direction: column;
-        gap: 20px;
+        gap: 0;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      nav ul li {
+        width: 100%;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      nav a {
+        display: block;
+        padding: 15px 20px;
+        width: 100%;
+      }
+
+      .cta-button {
+        margin: 20px;
+        text-align: center;
+      }
+
+      .header-container {
+        padding: 15px 20px;
       }
 
       .top-banner-container {
@@ -911,10 +982,6 @@
         grid-template-columns: 1fr;
       }
 
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-      }
 
       .cpf-container {
         flex-direction: column;
@@ -962,14 +1029,19 @@
       <div class="logo">
         <img src="https://c.animaapp.com/mljog8vsYVlO8T/img/uploaded-asset-1771098351100-0.png" alt="IDFA Formations et Ateliers">
       </div>
-      <nav>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav id="mainNav">
         <ul>
-          <li><a href="#formations">Formations</a></li>
-          <li><a href="#modalites">Modalités</a></li>
-          <li><a href="#niveaux">Niveaux</a></li>
-          <li><a href="#pourquoi">Pourquoi IDFA</a></li>
-          <li><a href="#temoignages">Témoignages</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#formations" onclick="closeMenu()">Formations</a></li>
+          <li><a href="#modalites" onclick="closeMenu()">Modalités</a></li>
+          <li><a href="#niveaux" onclick="closeMenu()">Niveaux</a></li>
+          <li><a href="#pourquoi" onclick="closeMenu()">Pourquoi IDFA</a></li>
+          <li><a href="#temoignages" onclick="closeMenu()">Témoignages</a></li>
+          <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -1356,6 +1428,33 @@
   </footer>
 
   <script>
+    // Mobile menu functionality
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      const toggle = document.querySelector('.menu-toggle');
+      nav.classList.toggle('active');
+      toggle.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const nav = document.getElementById('mainNav');
+      const toggle = document.querySelector('.menu-toggle');
+      nav.classList.remove('active');
+      toggle.classList.remove('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.getElementById('mainNav');
+      const toggle = document.querySelector('.menu-toggle');
+      const isClickInsideNav = nav.contains(event.target);
+      const isClickOnToggle = toggle.contains(event.target);
+      
+      if (!isClickInsideNav && !isClickOnToggle && nav.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+
     // Slider functionality
     let currentSlideIndex = 0;
     let slideInterval;
