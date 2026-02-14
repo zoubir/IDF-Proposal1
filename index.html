@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDFA Formations et Ateliers - Organisme de Formation Professionnelle</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Top Banner */
+    .top-banner {
+      background: linear-gradient(90deg, #1a4d4d 0%, #2d7a7a 50%, #1a9b8e 100%);
+      color: white;
+      padding: 12px 0;
+      font-size: 14px;
+    }
+
+    .top-banner-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-banner-text {
+      flex: 1;
+      text-align: center;
+    }
+
+    .top-banner strong {
+      font-weight: 600;
+    }
+
+    .top-banner-text a {
+      color: white;
+      text-decoration: underline;
+      margin-left: 15px;
+    }
+
+    .top-banner-social {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .top-banner-social a {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      backdrop-filter: blur(5px);
+    }
+
+    .top-banner-social a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .top-banner-social svg {
+      width: 16px;
+      height: 16px;
+      color: white;
+    }
+
+    /* Header */
+    header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    /* Slider Section */
+    .slider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 600px;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-content {
+      position: absolute;
+      top: 50%;
+      left: 80px;
+      transform: translateY(-50%);
+      text-align: left;
+      color: white;
+      z-index: 2;
+      width: 50%;
+      max-width: 700px;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(26, 155, 142, 0.85) 100%);
+      z-index: 1;
+    }
+
+    .slide-content h2 {
+      font-size: 64px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      animation: slideInDown 0.8s ease-out;
+      font-weight: 700;
+      line-height: 1.1;
+      text-align: left;
+    }
+
+    .slide-content p {
+      font-size: 18px;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+      animation: slideInUp 0.8s ease-out;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    .slide-buttons {
+      display: flex;
+      gap: 20px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .slide-btn {
+      display: inline-block;
+      background: #1a9b8e;
+      color: white;
+      padding: 16px 35px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 20px rgba(26, 155, 142, 0.3);
+      border: 2px solid #1a9b8e;
+    }
+
+    .slide-btn:hover {
+      background: #158f82;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(26, 155, 142, 0.5);
+    }
+
+    .slide-btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .slide-btn-secondary:hover {
+      background: white;
+      color: #1a9b8e;
+      border-color: white;
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      border: none;
+      font-size: 30px;
+      padding: 15px 20px;
+      cursor: pointer;
+      z-index: 3;
+      transition: all 0.3s;
+      backdrop-filter: blur(5px);
+    }
+
+    .slider-nav:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .slider-nav.prev {
+      left: 20px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .slider-nav.next {
+      right: 20px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 3;
+    }
+
+    .dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: white;
+      width: 40px;
+      border-radius: 10px;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #1a9b8e;
+    }
+
+    .cta-button {
+      background: #1a9b8e;
+      color: white !important;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 3px 10px rgba(26, 155, 142, 0.2);
+    }
+
+    .cta-button:hover {
+      background: #158f82;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(26, 155, 142, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #99f6e4 100%);
+      padding: 80px 30px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      color: #1a4d4d;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: #2d5555;
+      margin-bottom: 30px;
+    }
+
+    .hero-features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .hero-features li {
+      padding: 10px 0;
+      padding-left: 30px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%231a9b8e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>') no-repeat left center;
+      font-size: 16px;
+      color: #1a4d4d;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn-primary {
+      background: #1a9b8e;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(26, 155, 142, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: #158f82;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(26, 155, 142, 0.3);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #1a9b8e;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid #1a9b8e;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: #1a9b8e;
+      color: white;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(13, 148, 136, 0.2);
+    }
+
+    .rating-badge {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      background: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stars {
+      color: #fbbf24;
+      font-size: 18px;
+    }
+
+    /* Formations Section */
+    .formations {
+      padding: 80px 30px;
+      background: white;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-size: 40px;
+      color: #1a4d4d;
+      margin-bottom: 15px;
+    }
+
+    .section-header p {
+      font-size: 18px;
+      color: #666;
+    }
+
+    .formations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .formation-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(26, 155, 142, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .formation-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(26, 155, 142, 0.2);
+    }
+
+    .formation-image {
+      position: relative;
+      height: 200px;
+      background: linear-gradient(135deg, #1a4d4d 0%, #1a9b8e 50%, #2db5a8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: #1a1a1a;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .formation-content {
+      padding: 25px;
+    }
+
+    .formation-category {
+      display: inline-block;
+      background: #e6f7f5;
+      color: #1a4d4d;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .formation-content h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #1a4d4d;
+    }
+
+    .formation-content p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .formation-link {
+      display: inline-block;
+      color: #1a9b8e;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid #e6f7f5;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s;
+      width: 100%;
+      text-align: center;
+    }
+
+    .formation-link:hover {
+      background: #1a9b8e;
+      color: white;
+      border-color: #1a9b8e;
+    }
+
+    /* CPF Section */
+    .cpf-section {
+      background: #f0fdfa;
+      padding: 60px 30px;
+    }
+
+    .cpf-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #1a4d4d 0%, #1a9b8e 50%, #2db5a8 100%);
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      color: white;
+      box-shadow: 0 10px 40px rgba(26, 155, 142, 0.3);
+    }
+
+    .cpf-icon {
+      flex-shrink: 0;
+    }
+
+    .cpf-icon svg {
+      width: 100px;
+      height: 100px;
+      fill: white;
+    }
+
+    .cpf-content h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .cpf-content p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 80px 30px;
+      background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(26, 155, 142, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid #1a9b8e;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(26, 155, 142, 0.2);
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-header img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #b3e5df;
+    }
+
+    .testimonial-info h4 {
+      font-size: 18px;
+      color: #1a4d4d;
+      margin-bottom: 5px;
+    }
+
+    .testimonial-info p {
+      font-size: 14px;
+      color: #1a9b8e;
+    }
+
+    .testimonial-rating {
+      margin-bottom: 15px;
+    }
+
+    .testimonial-rating .stars {
+      color: #fbbf24;
+      font-size: 18px;
+    }
+
+    .testimonial-text {
+      color: #555;
+      line-height: 1.8;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 80px 30px;
+      background: white;
+    }
+
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-container h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #1a4d4d;
+    }
+
+    .contact-container p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #1a4d4d;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px;
+      border: 2px solid #e6f7f5;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #1a9b8e;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background: #1a9b8e;
+      color: white;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(26, 155, 142, 0.2);
+    }
+
+    .submit-btn:hover {
+      background: #158f82;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(26, 155, 142, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #1a4d4d 0%, #1a6b60 100%);
+      color: white;
+      padding: 60px 30px 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-about img {
+      height: 50px;
+      margin-bottom: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-about p {
+      color: #ccfbf1;
+      line-height: 1.8;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #99f6e4;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section a {
+      color: #ccfbf1;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: #2dd4bf;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: #1a9b8e;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(26, 155, 142, 0.3);
+    }
+
+    .social-links svg {
+      width: 20px;
+      height: 20px;
+      color: #ccfbf1;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(204, 251, 241, 0.2);
+      padding-top: 30px;
+      text-align: center;
+      color: #ccfbf1;
+    }
+
+    .footer-bottom a {
+      color: #ccfbf1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .top-banner-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .top-banner-text {
+        text-align: center;
+      }
+
+      .slider-container {
+        height: 400px;
+      }
+
+      .slide-content {
+        left: 30px;
+        width: calc(100% - 60px);
+        max-width: none;
+      }
+
+      .slide-content h2 {
+        font-size: 32px;
+      }
+
+      .slide-content p {
+        font-size: 16px;
+      }
+
+      .slide-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .slide-btn {
+        text-align: center;
+      }
+
+      .slider-nav {
+        padding: 10px 15px;
+        font-size: 20px;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .formations-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .cpf-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <div class="top-banner-container">
+      <div class="top-banner-text">
+        <strong>Nouveau –</strong> Découvrez nos formations certifiantes !
+        <a href="#contact">En savoir plus</a>
+      </div>
+      <div class="top-banner-social">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="https://c.animaapp.com/mljog8vsYVlO8T/img/uploaded-asset-1770916165504-0.png" alt="IDFA Formations et Ateliers">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#formations">Formations</a></li>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="tel:0188613481" class="cta-button">01 88 61 34 81</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slider Section -->
+  <section class="slider">
+    <div class="slider-container">
+      <div class="slide active">
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600&h=600&fit=crop" alt="Formation en groupe">
+        <div class="slide-content">
+          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 600;">CENTRE DE FORMATION EN ANGLAIS</p>
+          <h2>Maîtrisez l'anglais.<br><span style="color: #2dd4bf;">Développez votre<br>avenir.</span></h2>
+          <p>Formations en présentiel, à distance ou hybride — du niveau A1 à C2</p>
+          <div class="slide-buttons">
+            <a href="#contact" class="slide-btn">Découvrir nos formations</a>
+            <a href="#formations" class="slide-btn slide-btn-secondary">Évaluer mon niveau</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&h=600&fit=crop" alt="Leadership">
+        <div class="slide-content">
+          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 600;">FORMATION MANAGEMENT</p>
+          <h2>Devenez un leader.<br><span style="color: #2dd4bf;">Inspirez vos équipes.</span></h2>
+          <p>Développez vos compétences managériales avec nos experts</p>
+          <div class="slide-buttons">
+            <a href="#contact" class="slide-btn">Découvrir nos formations</a>
+            <a href="#formations" class="slide-btn slide-btn-secondary">Nos programmes</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&h=600&fit=crop" alt="Formation digitale">
+        <div class="slide-content">
+          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 600;">TRANSFORMATION DIGITALE</p>
+          <h2>Maîtrisez le digital.<br><span style="color: #2dd4bf;">Accélérez votre<br>carrière.</span></h2>
+          <p>Formations aux outils numériques essentiels pour votre réussite</p>
+          <div class="slide-buttons">
+            <a href="#contact" class="slide-btn">Découvrir nos formations</a>
+            <a href="#formations" class="slide-btn slide-btn-secondary">Voir le catalogue</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&h=600&fit=crop" alt="Bureautique">
+        <div class="slide-content">
+          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 600;">FORMATION BUREAUTIQUE</p>
+          <h2>Maîtrisez Office.<br><span style="color: #2dd4bf;">Boostez votre<br>productivité.</span></h2>
+          <p>Excel, Word, PowerPoint — formations complètes et certifiantes</p>
+          <div class="slide-buttons">
+            <a href="#contact" class="slide-btn">Découvrir nos formations</a>
+            <a href="#formations" class="slide-btn slide-btn-secondary">Nos certifications</a>
+          </div>
+        </div>
+      </div>
+      <button class="slider-nav prev" onclick="changeSlide(-1)">❮</button>
+      <button class="slider-nav next" onclick="changeSlide(1)">❯</button>
+      <div class="slider-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>IDFA Formations et Ateliers<br>Votre partenaire formation</h1>
+        <p>Parce que chaque parcours est unique, nos formations s'adaptent à vos besoins, vos ambitions et votre rythme.</p>
+        <ul class="hero-features">
+          <li><strong>Programme personnalisé :</strong> un formateur dédié pour vous</li>
+          <li><strong>Flexibilité totale :</strong> en présentiel ou à distance</li>
+          <li><strong>Certifications reconnues :</strong> valorisez vos compétences</li>
+        </ul>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Démarrer ma formation</a>
+          <a href="#formations" class="btn-secondary">Voir les formations</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop" alt="Formation professionnelle">
+        <div class="rating-badge">
+          <span class="stars">★★★★★</span>
+          <strong>4.8/5</strong>
+          <span style="color: #666;">sur 500+ avis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formations Section -->
+  <section id="formations" class="formations">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Nos formations incontournables</h2>
+        <p>Développez vos compétences avec nos programmes adaptés</p>
+      </div>
+      <div class="formations-grid">
+        <!-- Formation 1 -->
+        <div class="formation-card">
+          <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&h=400&fit=crop'); background-size: cover; background-position: center;">
+            <div class="popular-badge">Populaire</div>
+          </div>
+          <div class="formation-content">
+            <span class="formation-category">Langues</span>
+            <h3>Anglais Professionnel</h3>
+            <p>Développez vos compétences en anglais pour le monde professionnel avec nos formations personnalisées</p>
+            <a href="#contact" class="formation-link">Découvrir la formation</a>
+          </div>
+        </div>
+
+        <!-- Formation 2 -->
+        <div class="formation-card">
+          <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop'); background-size: cover; background-position: center;">
+          </div>
+          <div class="formation-content">
+            <span class="formation-category">Bureautique</span>
+            <h3>Pack Office Complet</h3>
+            <p>Maîtrisez Excel, Word, PowerPoint et Outlook pour optimiser votre productivité au quotidien</p>
+            <a href="#contact" class="formation-link">Découvrir la formation</a>
+          </div>
+        </div>
+
+        <!-- Formation 3 -->
+        <div class="formation-card">
+          <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop'); background-size: cover; background-position: center;">
+            <div class="popular-badge">Populaire</div>
+          </div>
+          <div class="formation-content">
+            <span class="formation-category">Digital</span>
+            <h3>Développement Web</h3>
+            <p>Apprenez à créer des sites web modernes et responsive avec HTML, CSS et JavaScript</p>
+            <a href="#contact" class="formation-link">Découvrir la formation</a>
+          </div>
+        </div>
+
+        <!-- Formation 4 -->
+        <div class="formation-card">
+          <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop'); background-size: cover; background-position: center;">
+          </div>
+          <div class="formation-content">
+            <span class="formation-category">Management</span>
+            <h3>Leadership & Management</h3>
+            <p>Développez vos compétences managériales et devenez un leader inspirant pour vos équipes</p>
+            <a href="#contact" class="formation-link">Découvrir la formation</a>
+          </div>
+        </div>
+
+        <!-- Formation 5 -->
+        <div class="formation-card">
+          <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop'); background-size: cover; background-position: center;">
+          </div>
+          <div class="formation-content">
+            <span class="formation-category">Marketing</span>
+            <h3>Marketing Digital</h3>
+            <p>Maîtrisez les stratégies digitales, SEO, réseaux sociaux et publicité en ligne</p>
+            <a href="#contact" class="formation-link">Découvrir la formation</a>
+          </div>
+        </div>
+
+        <!-- Formation 6 -->
+        <div class="formation-card">
+          <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=400&fit=crop'); background-size: cover; background-position: center;">
+          </div>
+          <div class="formation-content">
+            <span class="formation-category">RH</span>
+            <h3>Gestion des Ressources Humaines</h3>
+            <p>Formez-vous aux fondamentaux de la GRH et au développement des talents</p>
+            <a href="#contact" class="formation-link">Découvrir la formation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CPF Section -->
+  <section class="cpf-section">
+    <div class="cpf-container">
+      <div class="cpf-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+      </div>
+      <div class="cpf-content">
+        <h3>Formations éligibles au CPF</h3>
+        <p>Toutes nos formations sont éligibles au Compte Personnel de Formation. Utilisez vos droits pour financer votre montée en compétences sans frais supplémentaires.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Ils nous font confiance</h2>
+        <p>Découvrez les témoignages de nos apprenants</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://i.pravatar.cc/100?img=1" alt="Sophie Martin">
+            <div class="testimonial-info">
+              <h4>Sophie Martin</h4>
+              <p>Responsable Marketing</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <span class="stars">★★★★★</span>
+          </div>
+          <p class="testimonial-text">"Formation en marketing digital exceptionnelle ! Le formateur était très pédagogue et les contenus parfaitement adaptés à mes besoins. J'ai pu appliquer immédiatement les compétences acquises dans mon travail."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://i.pravatar.cc/100?img=12" alt="Thomas Dubois">
+            <div class="testimonial-info">
+              <h4>Thomas Dubois</h4>
+              <p>Chef de Projet</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <span class="stars">★★★★★</span>
+          </div>
+          <p class="testimonial-text">"Excellente formation en management. Les exercices pratiques et les mises en situation m'ont permis de développer mes compétences de leader. Je recommande vivement IDFA Formations !"</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://i.pravatar.cc/100?img=5" alt="Marie Lefebvre">
+            <div class="testimonial-info">
+              <h4>Marie Lefebvre</h4>
+              <p>Assistante Administrative</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <span class="stars">★★★★★</span>
+          </div>
+          <p class="testimonial-text">"La formation Pack Office m'a permis de gagner énormément en productivité. Le formateur était patient et a su s'adapter à mon niveau. Merci pour cet accompagnement personnalisé !"</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://i.pravatar.cc/100?img=8" alt="Pierre Rousseau">
+            <div class="testimonial-info">
+              <h4>Pierre Rousseau</h4>
+              <p>Développeur Web</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <span class="stars">★★★★★</span>
+          </div>
+          <p class="testimonial-text">"Formation en développement web très complète. J'ai pu créer mon premier site professionnel dès la fin de la formation. Le suivi post-formation est également un vrai plus."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://i.pravatar.cc/100?img=9" alt="Isabelle Bernard">
+            <div class="testimonial-info">
+              <h4>Isabelle Bernard</h4>
+              <p>DRH</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <span class="stars">★★★★★</span>
+          </div>
+          <p class="testimonial-text">"Formation RH de qualité avec des intervenants experts. Les outils et méthodes partagés sont directement applicables. Une expérience enrichissante que je recommande à tous les professionnels RH."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://i.pravatar.cc/100?img=3" alt="Laurent Petit">
+            <div class="testimonial-info">
+              <h4>Laurent Petit</h4>
+              <p>Commercial</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <span class="stars">★★★★★</span>
+          </div>
+          <p class="testimonial-text">"Grâce à la formation en anglais professionnel, j'ai pu décrocher un poste à l'international. Les cours étaient dynamiques et axés sur la pratique. Un grand merci à toute l'équipe !"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="contact-container">
+      <h2>Démarrez votre formation dès aujourd'hui</h2>
+      <p>Nos conseillers sont à votre écoute pour vous accompagner dans votre projet</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Nom complet *</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone *</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="formation">Formation souhaitée *</label>
+          <select id="formation" name="formation" required>
+            <option value="">Sélectionnez une formation</option>
+            <option value="anglais">Anglais Professionnel</option>
+            <option value="office">Pack Office Complet</option>
+            <option value="web">Développement Web</option>
+            <option value="management">Leadership & Management</option>
+            <option value="marketing">Marketing Digital</option>
+            <option value="rh">Gestion des Ressources Humaines</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Envoyer ma demande</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <img src="https://c.animaapp.com/mljog8vsYVlO8T/img/uploaded-asset-1770916165504-0.png" alt="IDFA Formations">
+        <p>IDFA Formations et Ateliers est votre partenaire de confiance pour le développement de vos compétences professionnelles. Nous proposons des formations sur mesure adaptées à vos besoins.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Formations</h4>
+        <ul>
+          <li><a href="#formations">Langues</a></li>
+          <li><a href="#formations">Bureautique</a></li>
+          <li><a href="#formations">Digital</a></li>
+          <li><a href="#formations">Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>À propos</h4>
+        <ul>
+          <li><a href="#about">Notre histoire</a></li>
+          <li><a href="#about">Notre équipe</a></li>
+          <li><a href="#contact">Nous contacter</a></li>
+          <li><a href="#about">Nos agences</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:0188613481">01 88 61 34 81</a></li>
+          <li><a href="mailto:contact@idfa-formations.fr">contact@idfa-formations.fr</a></li>
+          <li>Du lundi au vendredi<br>9h - 18h</li>
+        </ul>
+        <div class="social-links">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 IDFA Formations et Ateliers. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Slider functionality
+    let currentSlideIndex = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      
+      if (index >= slides.length) {
+        currentSlideIndex = 0;
+      } else if (index < 0) {
+        currentSlideIndex = slides.length - 1;
+      } else {
+        currentSlideIndex = index;
+      }
+      
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      slides[currentSlideIndex].classList.add('active');
+      dots[currentSlideIndex].classList.add('active');
+    }
+
+    function changeSlide(direction) {
+      clearInterval(slideInterval);
+      showSlide(currentSlideIndex + direction);
+      startAutoSlide();
+    }
+
+    function currentSlide(index) {
+      clearInterval(slideInterval);
+      showSlide(index);
+      startAutoSlide();
+    }
+
+    function startAutoSlide() {
+      slideInterval = setInterval(() => {
+        showSlide(currentSlideIndex + 1);
+      }, 5000);
+    }
+
+    // Start auto-sliding
+    startAutoSlide();
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Form submission
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Merci pour votre demande ! Nous vous contacterons très prochainement.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
