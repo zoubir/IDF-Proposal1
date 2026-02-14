@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IDFA Formations et Ateliers - Organisme de Formation Professionnelle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,14 +13,14 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
       color: #333;
     }
 
     /* Top Banner */
     .top-banner {
-      background: linear-gradient(90deg, #1a4d4d 0%, #2d7a7a 50%, #1a9b8e 100%);
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
       color: white;
       padding: 12px 0;
       font-size: 14px;
@@ -36,26 +37,25 @@
 
     .top-banner-text {
       flex: 1;
-      text-align: center;
     }
 
     .top-banner strong {
       font-weight: 600;
     }
 
-    .top-banner-text a {
+    .top-banner a {
       color: white;
       text-decoration: underline;
       margin-left: 15px;
     }
 
-    .top-banner-social {
+    .top-social {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
     }
 
-    .top-banner-social a {
+    .top-social a {
       width: 32px;
       height: 32px;
       background: rgba(255, 255, 255, 0.2);
@@ -67,12 +67,12 @@
       backdrop-filter: blur(5px);
     }
 
-    .top-banner-social a:hover {
+    .top-social a:hover {
       background: rgba(255, 255, 255, 0.3);
       transform: translateY(-2px);
     }
 
-    .top-banner-social svg {
+    .top-social svg {
       width: 16px;
       height: 16px;
       color: white;
@@ -90,14 +90,49 @@
     .header-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px 30px;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .logo img {
-      height: 60px;
+      height: 70px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 35px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white !important;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.2);
+    }
+
+    .cta-button:hover {
+      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
     }
 
     /* Slider Section */
@@ -134,12 +169,11 @@
     .slide-content {
       position: absolute;
       top: 50%;
-      left: 80px;
+      left: 10%;
       transform: translateY(-50%);
       text-align: left;
       color: white;
       z-index: 2;
-      width: 50%;
       max-width: 700px;
     }
 
@@ -150,27 +184,30 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(26, 155, 142, 0.85) 100%);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(30, 64, 175, 0.75) 100%);
       z-index: 1;
     }
 
     .slide-content h2 {
       font-size: 64px;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
       animation: slideInDown 0.8s ease-out;
-      font-weight: 700;
       line-height: 1.1;
-      text-align: left;
+    }
+
+    .slide-content .highlight {
+      color: #fb923c;
+      display: block;
     }
 
     .slide-content p {
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 40px;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
       animation: slideInUp 0.8s ease-out;
       font-weight: 400;
-      text-align: left;
     }
 
     .slide-buttons {
@@ -179,36 +216,41 @@
       animation: fadeIn 1s ease-out;
     }
 
-    .slide-btn {
+    .slide-btn-primary {
       display: inline-block;
-      background: #1a9b8e;
+      background: #fb923c;
       color: white;
-      padding: 16px 35px;
+      padding: 16px 40px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
       font-size: 16px;
       transition: all 0.3s;
-      box-shadow: 0 5px 20px rgba(26, 155, 142, 0.3);
-      border: 2px solid #1a9b8e;
+      box-shadow: 0 5px 20px rgba(251, 146, 60, 0.3);
     }
 
-    .slide-btn:hover {
-      background: #158f82;
+    .slide-btn-primary:hover {
+      background: #f97316;
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(26, 155, 142, 0.5);
+      box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4);
     }
 
     .slide-btn-secondary {
+      display: inline-block;
       background: transparent;
       color: white;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s;
       border: 2px solid white;
     }
 
     .slide-btn-secondary:hover {
       background: white;
-      color: #1a9b8e;
-      border-color: white;
+      color: #2563eb;
     }
 
     .slider-nav {
@@ -296,43 +338,9 @@
       }
     }
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 30px;
-      align-items: center;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #1a9b8e;
-    }
-
-    .cta-button {
-      background: #1a9b8e;
-      color: white !important;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s;
-      box-shadow: 0 3px 10px rgba(26, 155, 142, 0.2);
-    }
-
-    .cta-button:hover {
-      background: #158f82;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(26, 155, 142, 0.3);
-    }
-
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #99f6e4 100%);
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
       padding: 80px 30px;
     }
 
@@ -347,14 +355,15 @@
 
     .hero-content h1 {
       font-size: 48px;
-      color: #1a4d4d;
+      color: #1e3a8a;
       margin-bottom: 20px;
       line-height: 1.2;
+      font-weight: 700;
     }
 
     .hero-content p {
       font-size: 18px;
-      color: #2d5555;
+      color: #1e40af;
       margin-bottom: 30px;
     }
 
@@ -366,9 +375,9 @@
     .hero-features li {
       padding: 10px 0;
       padding-left: 30px;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%231a9b8e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>') no-repeat left center;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%232563eb" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>') no-repeat left center;
       font-size: 16px;
-      color: #1a4d4d;
+      color: #1e40af;
     }
 
     .hero-buttons {
@@ -377,7 +386,7 @@
     }
 
     .btn-primary {
-      background: #1a9b8e;
+      background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
       color: white;
       padding: 15px 30px;
       border-radius: 8px;
@@ -385,29 +394,29 @@
       font-weight: 600;
       transition: all 0.3s;
       display: inline-block;
-      box-shadow: 0 5px 15px rgba(26, 155, 142, 0.2);
+      box-shadow: 0 5px 15px rgba(251, 146, 60, 0.2);
     }
 
     .btn-primary:hover {
-      background: #158f82;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(26, 155, 142, 0.3);
+      box-shadow: 0 8px 20px rgba(251, 146, 60, 0.3);
     }
 
     .btn-secondary {
       background: white;
-      color: #1a9b8e;
+      color: #2563eb;
       padding: 15px 30px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      border: 2px solid #1a9b8e;
+      border: 2px solid #2563eb;
       transition: all 0.3s;
       display: inline-block;
     }
 
     .btn-secondary:hover {
-      background: #1a9b8e;
+      background: #2563eb;
       color: white;
     }
 
@@ -418,7 +427,7 @@
     .hero-image img {
       width: 100%;
       border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(13, 148, 136, 0.2);
+      box-shadow: 0 20px 60px rgba(37, 99, 235, 0.2);
     }
 
     .rating-badge {
@@ -457,8 +466,9 @@
 
     .section-header h2 {
       font-size: 40px;
-      color: #1a4d4d;
+      color: #1e3a8a;
       margin-bottom: 15px;
+      font-weight: 700;
     }
 
     .section-header p {
@@ -476,19 +486,19 @@
       background: white;
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 5px 20px rgba(26, 155, 142, 0.1);
+      box-shadow: 0 5px 20px rgba(37, 99, 235, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .formation-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(26, 155, 142, 0.2);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
     }
 
     .formation-image {
       position: relative;
       height: 200px;
-      background: linear-gradient(135deg, #1a4d4d 0%, #1a9b8e 50%, #2db5a8 100%);
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 50%, #1e3a8a 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -498,8 +508,8 @@
       position: absolute;
       top: 15px;
       left: 15px;
-      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-      color: #1a1a1a;
+      background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+      color: white;
       padding: 5px 15px;
       border-radius: 20px;
       font-size: 12px;
@@ -512,8 +522,8 @@
 
     .formation-category {
       display: inline-block;
-      background: #e6f7f5;
-      color: #1a4d4d;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      color: #1e40af;
       padding: 5px 15px;
       border-radius: 20px;
       font-size: 12px;
@@ -524,7 +534,8 @@
     .formation-content h3 {
       font-size: 20px;
       margin-bottom: 10px;
-      color: #1a4d4d;
+      color: #1e3a8a;
+      font-weight: 600;
     }
 
     .formation-content p {
@@ -535,10 +546,10 @@
 
     .formation-link {
       display: inline-block;
-      color: #1a9b8e;
+      color: #2563eb;
       text-decoration: none;
       font-weight: 600;
-      border: 2px solid #e6f7f5;
+      border: 2px solid #dbeafe;
       padding: 10px 20px;
       border-radius: 8px;
       transition: all 0.3s;
@@ -547,28 +558,28 @@
     }
 
     .formation-link:hover {
-      background: #1a9b8e;
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
       color: white;
-      border-color: #1a9b8e;
+      border-color: #2563eb;
     }
 
     /* CPF Section */
     .cpf-section {
-      background: #f0fdfa;
+      background: #eff6ff;
       padding: 60px 30px;
     }
 
     .cpf-container {
       max-width: 1200px;
       margin: 0 auto;
-      background: linear-gradient(135deg, #1a4d4d 0%, #1a9b8e 50%, #2db5a8 100%);
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 50%, #1e3a8a 100%);
       border-radius: 20px;
       padding: 40px;
       display: flex;
       align-items: center;
       gap: 40px;
       color: white;
-      box-shadow: 0 10px 40px rgba(26, 155, 142, 0.3);
+      box-shadow: 0 10px 40px rgba(37, 99, 235, 0.3);
     }
 
     .cpf-icon {
@@ -584,6 +595,7 @@
     .cpf-content h3 {
       font-size: 28px;
       margin-bottom: 10px;
+      font-weight: 700;
     }
 
     .cpf-content p {
@@ -594,7 +606,7 @@
     /* Testimonials Section */
     .testimonials-section {
       padding: 80px 30px;
-      background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
     }
 
     .testimonials-grid {
@@ -607,14 +619,16 @@
       background: white;
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(26, 155, 142, 0.1);
+      box-shadow: 0 5px 20px rgba(37, 99, 235, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
-      border-top: 4px solid #1a9b8e;
+      border-top: 4px solid transparent;
+      border-image: linear-gradient(135deg, #2563eb 0%, #1e40af 50%, #fb923c 100%);
+      border-image-slice: 1;
     }
 
     .testimonial-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(26, 155, 142, 0.2);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
     }
 
     .testimonial-header {
@@ -629,18 +643,19 @@
       height: 60px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #b3e5df;
+      border: 3px solid #bfdbfe;
     }
 
     .testimonial-info h4 {
       font-size: 18px;
-      color: #1a4d4d;
+      color: #1e3a8a;
       margin-bottom: 5px;
+      font-weight: 600;
     }
 
     .testimonial-info p {
       font-size: 14px;
-      color: #1a9b8e;
+      color: #2563eb;
     }
 
     .testimonial-rating {
@@ -674,7 +689,8 @@
     .contact-container h2 {
       font-size: 40px;
       margin-bottom: 20px;
-      color: #1a4d4d;
+      color: #1e3a8a;
+      font-weight: 700;
     }
 
     .contact-container p {
@@ -697,16 +713,17 @@
     .form-group label {
       margin-bottom: 8px;
       font-weight: 600;
-      color: #1a4d4d;
+      color: #1e3a8a;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
       padding: 12px;
-      border: 2px solid #e6f7f5;
+      border: 2px solid #dbeafe;
       border-radius: 8px;
       font-size: 16px;
+      font-family: 'Montserrat', sans-serif;
       transition: border-color 0.3s;
     }
 
@@ -714,7 +731,7 @@
     .form-group select:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: #1a9b8e;
+      border-color: #2563eb;
     }
 
     .form-group textarea {
@@ -723,7 +740,7 @@
     }
 
     .submit-btn {
-      background: #1a9b8e;
+      background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
       color: white;
       padding: 15px 40px;
       border: none;
@@ -732,18 +749,19 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
-      box-shadow: 0 5px 15px rgba(26, 155, 142, 0.2);
+      box-shadow: 0 5px 15px rgba(251, 146, 60, 0.2);
+      font-family: 'Montserrat', sans-serif;
     }
 
     .submit-btn:hover {
-      background: #158f82;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(26, 155, 142, 0.3);
+      box-shadow: 0 8px 20px rgba(251, 146, 60, 0.3);
     }
 
     /* Footer */
     footer {
-      background: linear-gradient(135deg, #1a4d4d 0%, #1a6b60 100%);
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
       color: white;
       padding: 60px 30px 30px;
     }
@@ -764,14 +782,15 @@
     }
 
     .footer-about p {
-      color: #ccfbf1;
+      color: #dbeafe;
       line-height: 1.8;
     }
 
     .footer-section h4 {
       margin-bottom: 20px;
       font-size: 18px;
-      color: #99f6e4;
+      color: #bfdbfe;
+      font-weight: 600;
     }
 
     .footer-section ul {
@@ -783,13 +802,13 @@
     }
 
     .footer-section a {
-      color: #ccfbf1;
+      color: #dbeafe;
       text-decoration: none;
       transition: color 0.3s;
     }
 
     .footer-section a:hover {
-      color: #2dd4bf;
+      color: #fb923c;
     }
 
     .social-links {
@@ -810,26 +829,26 @@
     }
 
     .social-links a:hover {
-      background: #1a9b8e;
+      background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(26, 155, 142, 0.3);
+      box-shadow: 0 5px 15px rgba(251, 146, 60, 0.3);
     }
 
     .social-links svg {
       width: 20px;
       height: 20px;
-      color: #ccfbf1;
+      color: #dbeafe;
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(204, 251, 241, 0.2);
+      border-top: 1px solid rgba(219, 234, 254, 0.2);
       padding-top: 30px;
       text-align: center;
-      color: #ccfbf1;
+      color: #dbeafe;
     }
 
     .footer-bottom a {
-      color: #ccfbf1;
+      color: #dbeafe;
     }
 
     /* Responsive */
@@ -842,24 +861,21 @@
       .top-banner-container {
         flex-direction: column;
         gap: 15px;
-      }
-
-      .top-banner-text {
         text-align: center;
       }
 
       .slider-container {
-        height: 400px;
+        height: 500px;
       }
 
       .slide-content {
-        left: 30px;
-        width: calc(100% - 60px);
-        max-width: none;
+        left: 5%;
+        right: 5%;
+        max-width: 90%;
       }
 
       .slide-content h2 {
-        font-size: 32px;
+        font-size: 36px;
       }
 
       .slide-content p {
@@ -868,11 +884,6 @@
 
       .slide-buttons {
         flex-direction: column;
-        gap: 10px;
-      }
-
-      .slide-btn {
-        text-align: center;
       }
 
       .slider-nav {
@@ -920,7 +931,7 @@
         <strong>Nouveau –</strong> Découvrez nos formations certifiantes !
         <a href="#contact">En savoir plus</a>
       </div>
-      <div class="top-banner-social">
+      <div class="top-social">
         <a href="https://facebook.com" target="_blank" aria-label="Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -949,14 +960,16 @@
   <header>
     <div class="header-container">
       <div class="logo">
-        <img src="https://c.animaapp.com/mljog8vsYVlO8T/img/uploaded-asset-1770916165504-0.png" alt="IDFA Formations et Ateliers">
+        <img src="https://c.animaapp.com/mljog8vsYVlO8T/img/uploaded-asset-1771098351100-0.png" alt="IDFA Formations et Ateliers">
       </div>
       <nav>
         <ul>
           <li><a href="#formations">Formations</a></li>
-          <li><a href="#about">À propos</a></li>
+          <li><a href="#modalites">Modalités</a></li>
+          <li><a href="#niveaux">Niveaux</a></li>
+          <li><a href="#pourquoi">Pourquoi IDFA</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="tel:0188613481" class="cta-button">01 88 61 34 81</a></li>
         </ul>
       </nav>
     </div>
@@ -968,48 +981,44 @@
       <div class="slide active">
         <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600&h=600&fit=crop" alt="Formation en groupe">
         <div class="slide-content">
-          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 600;">CENTRE DE FORMATION EN ANGLAIS</p>
-          <h2>Maîtrisez l'anglais.<br><span style="color: #2dd4bf;">Développez votre<br>avenir.</span></h2>
-          <p>Formations en présentiel, à distance ou hybride — du niveau A1 à C2</p>
+          <h2>Maîtrisez l'anglais.<br><span class="highlight">Développez votre avenir.</span></h2>
+          <p>Formations en présentiel, à distance ou hybride – du niveau A1 à C2</p>
           <div class="slide-buttons">
-            <a href="#contact" class="slide-btn">Découvrir nos formations</a>
-            <a href="#formations" class="slide-btn slide-btn-secondary">Évaluer mon niveau</a>
+            <a href="#contact" class="slide-btn-primary">Découvrir nos formations</a>
+            <a href="#niveaux" class="slide-btn-secondary">Évaluer mon niveau</a>
           </div>
         </div>
       </div>
       <div class="slide">
         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&h=600&fit=crop" alt="Leadership">
         <div class="slide-content">
-          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 600;">FORMATION MANAGEMENT</p>
-          <h2>Devenez un leader.<br><span style="color: #2dd4bf;">Inspirez vos équipes.</span></h2>
-          <p>Développez vos compétences managériales avec nos experts</p>
+          <h2>Devenez un leader.<br><span class="highlight">Inspirez vos équipes.</span></h2>
+          <p>Formations en management et leadership adaptées à vos besoins</p>
           <div class="slide-buttons">
-            <a href="#contact" class="slide-btn">Découvrir nos formations</a>
-            <a href="#formations" class="slide-btn slide-btn-secondary">Nos programmes</a>
+            <a href="#contact" class="slide-btn-primary">Découvrir nos formations</a>
+            <a href="#formations" class="slide-btn-secondary">En savoir plus</a>
           </div>
         </div>
       </div>
       <div class="slide">
         <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&h=600&fit=crop" alt="Formation digitale">
         <div class="slide-content">
-          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 600;">TRANSFORMATION DIGITALE</p>
-          <h2>Maîtrisez le digital.<br><span style="color: #2dd4bf;">Accélérez votre<br>carrière.</span></h2>
-          <p>Formations aux outils numériques essentiels pour votre réussite</p>
+          <h2>Transformation digitale.<br><span class="highlight">Réussissez votre transition.</span></h2>
+          <p>Maîtrisez les outils numériques essentiels pour votre entreprise</p>
           <div class="slide-buttons">
-            <a href="#contact" class="slide-btn">Découvrir nos formations</a>
-            <a href="#formations" class="slide-btn slide-btn-secondary">Voir le catalogue</a>
+            <a href="#contact" class="slide-btn-primary">Découvrir nos formations</a>
+            <a href="#formations" class="slide-btn-secondary">Voir le catalogue</a>
           </div>
         </div>
       </div>
       <div class="slide">
         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&h=600&fit=crop" alt="Bureautique">
         <div class="slide-content">
-          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; font-weight: 600;">FORMATION BUREAUTIQUE</p>
-          <h2>Maîtrisez Office.<br><span style="color: #2dd4bf;">Boostez votre<br>productivité.</span></h2>
-          <p>Excel, Word, PowerPoint — formations complètes et certifiantes</p>
+          <h2>Excellence bureautique.<br><span class="highlight">Boostez votre productivité.</span></h2>
+          <p>Formations complètes sur Pack Office et outils collaboratifs</p>
           <div class="slide-buttons">
-            <a href="#contact" class="slide-btn">Découvrir nos formations</a>
-            <a href="#formations" class="slide-btn slide-btn-secondary">Nos certifications</a>
+            <a href="#contact" class="slide-btn-primary">Découvrir nos formations</a>
+            <a href="#formations" class="slide-btn-secondary">Je me lance</a>
           </div>
         </div>
       </div>
@@ -1152,7 +1161,7 @@
   </section>
 
   <!-- Testimonials Section -->
-  <section class="testimonials-section">
+  <section id="temoignages" class="testimonials-section">
     <div class="section-container">
       <div class="section-header">
         <h2>Ils nous font confiance</h2>
@@ -1289,7 +1298,7 @@
   <footer>
     <div class="footer-container">
       <div class="footer-about">
-        <img src="https://c.animaapp.com/mljog8vsYVlO8T/img/uploaded-asset-1770916165504-0.png" alt="IDFA Formations">
+        <img src="https://c.animaapp.com/mljog8vsYVlO8T/img/uploaded-asset-1771098351100-0.png" alt="IDFA Formations">
         <p>IDFA Formations et Ateliers est votre partenaire de confiance pour le développement de vos compétences professionnelles. Nous proposons des formations sur mesure adaptées à vos besoins.</p>
       </div>
       <div class="footer-section">
